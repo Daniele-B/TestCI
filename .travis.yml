@@ -14,9 +14,9 @@ env:
     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
   matrix:
    #- API=15 # only runs locally. Create+Start once from AndroidStudio to init sdcard. Then only from command-line w/-engine classic
-   - API=16 ABI=armeabi-v7a AUDIO=-no-audio
-   - API=17 ABI=armeabi-v7a
-   - API=18 ABI=armeabi-v7a # API18 has started being flaky
+   #- API=16 ABI=armeabi-v7a AUDIO=-no-audio
+   #- API=17 ABI=armeabi-v7a
+   #- API=18 ABI=armeabi-v7a # API18 has started being flaky
    #- API=19 ABI=armeabi-v7a # Fails: kernel/emulator mismatch, and emulator-29+ doesn't support "-engine classic" to fix
    # API 20 was Android Wear only
    - API=21
@@ -38,12 +38,12 @@ env:
 #     - env: API=Q
 
 jobs:
-  include:
+  #include:
     # The test stage is implicit, we only need to define a post-test stage for codacy finalization
-    - stage: finalize_coverage
-      env: FINALIZE_COVERAGE=TRUE API=NONE
-      install: skip
-      script: echo finalize codacy coverage uploads
+   # - stage: finalize_coverage
+    #  env: FINALIZE_COVERAGE=TRUE API=NONE
+    #  install: skip
+     # script: echo finalize codacy coverage uploads
 
 android:
   components:
